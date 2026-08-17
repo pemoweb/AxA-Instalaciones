@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 160" width="420" height="160">
+  <!-- Axa INSTALACIONES Official Vector Logotype -->
+  <g transform="translate(10, 0)">
+    <!-- Letter A -->
+    <path d="M40 105 L95 -20 L125 -20 L180 105 L144 105 L130 72 L82 72 L68 105 Z M91 48 L121 48 L106 12 Z" transform="translate(0, 20)" fill="#0B116B" />
+    
+    <!-- Letter x -->
+    <path d="M142 40 L168 40 L196 82 L224 40 L250 40 L214 91 L252 135 L226 135 L196 99 L166 135 L140 135 L178 91 Z" transform="translate(5, -10)" fill="#0B116B" />
+    
+    <!-- Letter a with inner Star -->
+    <g transform="translate(230, 20)">
+      <path d="M12 18 C12 6 22 -4 38 -4 C54 -4 63 4 68 15 L68 0 L94 0 L94 95 L68 95 L68 80 C62 90 51 97 36 97 C16 97 2 83 2 61 C2 39 16 26 40 26 L68 26 L68 22 C68 13 60 8 50 8 C40 8 34 12 30 18 Z M68 44 L44 44 C32 44 26 50 26 59 C26 68 33 75 44 75 C58 75 68 66 68 52 Z" fill="#0B116B" />
+      <!-- Star Sparkle -->
+      <path d="M 48 48 Q 50 58 57 60 Q 50 62 48 72 Q 46 62 39 60 Q 46 58 48 48 Z" fill="#0B116B" />
+    </g>
+    
+    <!-- Subtitle: INSTALACIONES -->
+    <text x="195" y="148" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Outfit', system-ui, -apple-system, sans-serif" font-weight="800" font-size="20" letter-spacing="0.32em" fill="#0B116B">
+      INSTALACIONES
+    </text>
+  </g>
+</svg>

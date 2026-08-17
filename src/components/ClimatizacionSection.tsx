@@ -41,7 +41,7 @@ export const ClimatizacionSection: React.FC<ServiceSectionProps> = ({ onOpenQuot
             {/* 4 Pillars Grid: Instalación, Mantenimiento, Reparación, Soluciones de climatización */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-2">
               {data.pillars.map((pillar, index) => (
-                <div
+                <article
                   key={index}
                   className="p-5 rounded-xl bg-[#F8FAFC] border border-slate-200/90 hover:border-[#0B116B]/40 transition-colors"
                 >
@@ -52,7 +52,7 @@ export const ClimatizacionSection: React.FC<ServiceSectionProps> = ({ onOpenQuot
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     {pillar.description}
                   </p>
-                </div>
+                </article>
               ))}
             </div>
 
@@ -72,7 +72,7 @@ export const ClimatizacionSection: React.FC<ServiceSectionProps> = ({ onOpenQuot
 
           {/* Right Image Composition */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+            <figure className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 m-0">
               <img
                 src={data.image}
                 alt="Instalación de climatización en Tarragona"
@@ -82,7 +82,7 @@ export const ClimatizacionSection: React.FC<ServiceSectionProps> = ({ onOpenQuot
               <div className="absolute inset-0 bg-gradient-to-t from-[#060A40]/70 via-transparent to-transparent" />
               
               {/* Technical Indicator Badge */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-white shadow-lg text-[#0B116B]">
+              <figcaption className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-white shadow-lg text-[#0B116B]">
                 <div className="flex items-center gap-2 mb-1">
                   <Wind className="w-4 h-4 text-[#0B116B]" />
                   <span className="text-xs font-mono font-bold tracking-wider">CLIMATIZACIÓN AXA</span>
@@ -90,8 +90,8 @@ export const ClimatizacionSection: React.FC<ServiceSectionProps> = ({ onOpenQuot
                 <p className="text-xs text-slate-600">
                   Estudios térmicos y montaje para viviendas, locales y oficinas en Tarragona.
                 </p>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
           </div>
 
         </div>

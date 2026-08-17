@@ -25,7 +25,7 @@ export const WhyAxaSection: React.FC = () => {
           {WHY_AXA.map((item, index) => {
             const Icon = icons[index];
             return (
-              <div
+              <article
                 key={item.number}
                 className="relative p-7 sm:p-8 rounded-2xl bg-[#F8FAFD] border border-slate-200/90 hover:border-[#0B116B] hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
               >
@@ -54,7 +54,7 @@ export const WhyAxaSection: React.FC = () => {
                     INSTALACIONES AXA
                   </span>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>

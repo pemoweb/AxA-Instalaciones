@@ -29,7 +29,7 @@ export const TarragonaLocationSection: React.FC<TarragonaSectionProps> = ({ onCo
             </div>
 
             {/* Address Card */}
-            <div className="p-6 sm:p-8 rounded-2xl bg-[#F8FAFD] border border-slate-200/90 shadow-sm space-y-4">
+            <address className="not-italic p-6 sm:p-8 rounded-2xl bg-[#F8FAFD] border border-slate-200/90 shadow-sm space-y-4">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-xl bg-[#0B116B] text-white shrink-0 mt-1">
                   <MapPin className="w-6 h-6" />
@@ -54,7 +54,7 @@ export const TarragonaLocationSection: React.FC<TarragonaSectionProps> = ({ onCo
                 <ShieldCheck className="w-4 h-4 text-[#0B116B]" />
                 <span>Cobertura en Tarragona y área metropolitana</span>
               </div>
-            </div>
+            </address>
 
             {/* Action Buttons: CÓMO LLEGAR & CONTACTAR */}
             <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4">

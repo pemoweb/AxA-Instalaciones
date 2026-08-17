@@ -82,15 +82,24 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
           {filteredItems.map((item, index) => {
             const isLarge = index === 0 || index === 3;
             return (
-              <div
+              <article
                 key={item.id}
                 onClick={() => setSelectedItem(item)}
                 className={`group relative rounded-2xl overflow-hidden bg-white border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer ${
                   isLarge ? 'md:col-span-2 lg:col-span-2' : 'col-span-1'
                 }`}
+                tabIndex={0}
+                role="button"
+                aria-label={`Ver detalles del proyecto: ${item.title}`}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedItem(item);
+                  }
+                }}
               >
                 {/* Image */}
-                <div className={`relative w-full ${isLarge ? 'h-72 sm:h-96' : 'h-72'} overflow-hidden bg-slate-100`}>
+                <figure className={`relative w-full ${isLarge ? 'h-72 sm:h-96' : 'h-72'} overflow-hidden bg-slate-100 m-0`}>
                   <img
                     src={item.image}
                     alt={item.title}
@@ -112,7 +121,7 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
                   </div>
 
                   {/* Bottom Text Content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-6 text-white transform transition-transform duration-300">
+                  <figcaption className="absolute bottom-0 left-0 right-0 p-6 text-white transform transition-transform duration-300">
                     <div className="flex items-center gap-1.5 text-xs text-slate-300 font-medium mb-1.5">
                       <MapPin className="w-3.5 h-3.5 text-slate-300" />
                       <span>{item.location}</span>
@@ -135,9 +144,9 @@ export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote 
                         </span>
                       ))}
                     </div>
-                  </div>
-                </div>
-              </div>
+                  </figcaption>
+                </figure>
+              </article>
             );
           })}
         </div>

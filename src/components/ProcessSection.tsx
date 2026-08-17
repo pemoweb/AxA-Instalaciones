@@ -23,37 +23,36 @@ export const ProcessSection: React.FC = () => {
         {/* Timeline Grid */}
         <div className="relative">
           {/* Connecting Line on Desktop */}
-          <div className="hidden lg:block absolute top-1/2 left-8 right-8 h-0.5 bg-slate-300 -translate-y-6 z-0" />
+          <div className="hidden lg:block absolute top-1/2 left-8 right-8 h-0.5 bg-slate-300 -translate-y-6 z-0" aria-hidden="true" />
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10">
+          <ol className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 relative z-10 list-none p-0 m-0">
             {PROCESS_STEPS.map((step, index) => {
               const Icon = stepIcons[index];
               return (
-                <div
-                  key={step.number}
-                  className="flex flex-col bg-white p-7 sm:p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200"
-                >
-                  {/* Step Header */}
-                  <div className="flex items-center justify-between mb-6">
-                    <span className="w-12 h-12 rounded-xl bg-[#0B116B] text-white flex items-center justify-center font-mono font-extrabold text-base shadow-md">
-                      {step.number}
-                    </span>
-                    <div className="p-2.5 rounded-xl bg-slate-100 text-[#0B116B]">
-                      <Icon className="w-5 h-5" />
+                <li key={step.number}>
+                  <article className="flex flex-col h-full bg-white p-7 sm:p-8 rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition-all duration-200">
+                    {/* Step Header */}
+                    <div className="flex items-center justify-between mb-6">
+                      <span className="w-12 h-12 rounded-xl bg-[#0B116B] text-white flex items-center justify-center font-mono font-extrabold text-base shadow-md">
+                        {step.number}
+                      </span>
+                      <div className="p-2.5 rounded-xl bg-slate-100 text-[#0B116B]">
+                        <Icon className="w-5 h-5" />
+                      </div>
                     </div>
-                  </div>
 
-                  <h3 className="text-lg sm:text-xl font-extrabold text-[#0B116B] tracking-tight mb-2">
-                    {step.title}
-                  </h3>
+                    <h3 className="text-lg sm:text-xl font-extrabold text-[#0B116B] tracking-tight mb-2">
+                      {step.title}
+                    </h3>
 
-                  <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
-                    {step.description}
-                  </p>
-                </div>
+                    <p className="text-sm sm:text-base text-slate-600 leading-relaxed font-normal">
+                      {step.description}
+                    </p>
+                  </article>
+                </li>
               );
             })}
-          </div>
+          </ol>
         </div>
 
       </div>

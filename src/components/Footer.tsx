@@ -43,18 +43,18 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenCookies }) 
               {COMPANY_INFO.specialtiesText}
             </p>
             
-            <div className="flex items-center gap-2 text-xs text-slate-400 pt-2 font-mono">
+            <address className="not-italic flex items-center gap-2 text-xs text-slate-400 pt-2 font-mono">
               <MapPin className="w-3.5 h-3.5 text-slate-300" />
               <span>{COMPANY_INFO.location.street} · {COMPANY_INFO.location.city}</span>
-            </div>
+            </address>
           </div>
 
           {/* Col 2: Navigation Links */}
-          <div className="lg:col-span-3 space-y-3">
+          <nav className="lg:col-span-3 space-y-3" aria-label="Navegación del pie de página">
             <p className="text-xs font-mono font-bold tracking-widest text-slate-400 uppercase">
               SECCIONES
             </p>
-            <ul className="space-y-1 text-sm text-slate-300">
+            <ul className="space-y-1 text-sm text-slate-300 list-none p-0 m-0">
               <li>
                 <a
                   href="#inicio"
@@ -92,7 +92,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenCookies }) 
                 </a>
               </li>
             </ul>
-          </div>
+          </nav>
 
           {/* Col 3: Social & Contact */}
           <div className="lg:col-span-4 space-y-4">

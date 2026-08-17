@@ -17,7 +17,7 @@ export const ElectricidadSection: React.FC<ServiceSectionProps> = ({ onOpenQuote
           
           {/* Left Image Composition (reversing layout for visual rhythm) */}
           <div className="lg:col-span-5 order-2 lg:order-1 relative">
-            <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+            <figure className="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200 m-0">
               <img
                 src={data.image}
                 alt="Instalaciones eléctricas y cuadros en Tarragona"
@@ -27,7 +27,7 @@ export const ElectricidadSection: React.FC<ServiceSectionProps> = ({ onOpenQuote
               <div className="absolute inset-0 bg-gradient-to-t from-[#060A40]/70 via-transparent to-transparent" />
               
               {/* Technical Indicator Badge */}
-              <div className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-white shadow-lg text-[#0B116B]">
+              <figcaption className="absolute bottom-6 left-6 right-6 p-4 rounded-xl bg-white/95 backdrop-blur-md border border-white shadow-lg text-[#0B116B]">
                 <div className="flex items-center gap-2 mb-1">
                   <Zap className="w-4 h-4 text-[#0B116B]" />
                   <span className="text-xs font-mono font-bold tracking-wider">ELECTRICIDAD AXA</span>
@@ -35,8 +35,8 @@ export const ElectricidadSection: React.FC<ServiceSectionProps> = ({ onOpenQuote
                 <p className="text-xs text-slate-600">
                   Instalaciones de potencia, cuadros y circuitos con precisión y máxima seguridad.
                 </p>
-              </div>
-            </div>
+              </figcaption>
+            </figure>
           </div>
 
           {/* Right Text & Technical Pillars */}
@@ -65,7 +65,7 @@ export const ElectricidadSection: React.FC<ServiceSectionProps> = ({ onOpenQuote
             {/* 4 Pillars Grid: Instalaciones, Reparaciones, Mantenimiento, Mejoras eléctricas */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6 pt-2">
               {data.pillars.map((pillar, index) => (
-                <div
+                <article
                   key={index}
                   className="p-5 rounded-xl bg-white border border-slate-200 hover:border-[#0B116B]/40 transition-colors shadow-sm"
                 >
@@ -76,7 +76,7 @@ export const ElectricidadSection: React.FC<ServiceSectionProps> = ({ onOpenQuote
                   <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
                     {pillar.description}
                   </p>
-                </div>
+                </article>
               ))}
             </div>
 

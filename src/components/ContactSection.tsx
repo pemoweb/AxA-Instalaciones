@@ -391,7 +391,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
           </div>
 
           {/* Right Direct Contact Info Panel */}
-          <div className="lg:col-span-5 flex flex-col justify-between space-y-8">
+          <aside className="lg:col-span-5 flex flex-col justify-between space-y-8">
             
             {/* Direct Info Card */}
             <div className="p-8 rounded-2xl bg-[#0B116B] text-white space-y-6 shadow-xl border border-[#131CA8]/50">
@@ -405,7 +405,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </div>
 
               {/* Location */}
-              <div className="flex items-start gap-4 pt-4 border-t border-white/15">
+              <address className="not-italic flex items-start gap-4 pt-4 border-t border-white/15">
                 <div className="p-2.5 rounded-lg bg-white/10 text-white shrink-0">
                   <MapPin className="w-5 h-5" />
                 </div>
@@ -414,7 +414,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <p className="text-base font-bold text-white mt-0.5">{COMPANY_INFO.location.street}</p>
                   <p className="text-sm text-slate-300">{COMPANY_INFO.location.postalCode} {COMPANY_INFO.location.city}</p>
                 </div>
-              </div>
+              </address>
 
               {/* 3 Specialties Badges */}
               <div className="pt-4 border-t border-white/15">
@@ -496,7 +496,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               </a>
             </div>
 
-          </div>
+          </aside>
 
         </div>
 

@@ -68,12 +68,12 @@ export const SpecialtiesOverview: React.FC<SpecialtiesOverviewProps> = ({ onSele
           {specialties.map((item) => {
             const Icon = item.icon;
             return (
-              <div
+              <article
                 key={item.id}
                 className="group relative flex flex-col bg-white rounded-2xl overflow-hidden border border-slate-200 shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
               >
                 {/* Photo with Overlay */}
-                <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100">
+                <figure className="relative h-64 sm:h-72 w-full overflow-hidden bg-slate-100 m-0">
                   <img
                     src={item.image}
                     alt={`Instalaciones AXA - ${item.title}`}
@@ -91,7 +91,7 @@ export const SpecialtiesOverview: React.FC<SpecialtiesOverviewProps> = ({ onSele
                       <Icon className="w-5 h-5" />
                     </div>
                   </div>
-                </div>
+                </figure>
 
                 {/* Card Body */}
                 <div className="p-6 sm:p-8 flex flex-col flex-grow justify-between bg-white">
@@ -109,6 +109,7 @@ export const SpecialtiesOverview: React.FC<SpecialtiesOverviewProps> = ({ onSele
                     <button
                       onClick={() => scrollToService(item.target)}
                       className="inline-flex items-center gap-1.5 min-h-[44px] text-xs font-bold text-slate-700 hover:text-[#0B116B] transition-colors"
+                      aria-label={`Ver detalles de ${item.title}`}
                     >
                       <span>VER DETALLES</span>
                       <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
@@ -116,12 +117,13 @@ export const SpecialtiesOverview: React.FC<SpecialtiesOverviewProps> = ({ onSele
                     <button
                       onClick={() => onSelectService(item.id)}
                       className="inline-flex items-center gap-1.5 min-h-[44px] px-4 py-2 rounded-xl bg-[#0B116B] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#070C4D] transition-colors shadow-sm"
+                      aria-label={`Consultar ${item.title}`}
                     >
                       <span>CONSULTAR</span>
                     </button>
                   </div>
                 </div>
-              </div>
+              </article>
             );
           })}
         </div>
