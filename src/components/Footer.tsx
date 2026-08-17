@@ -119,7 +119,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenCookies }) 
 
         {/* Sub-Footer Legal & Copyright */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <p>© 2026 Instalaciones AXA. Todos los derechos reservados.</p>
+          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-1 sm:gap-3 text-center sm:text-left">
+            <p>© 2026 Instalaciones AXA. Todos los derechos reservados.</p>
+            <span className="hidden sm:inline text-slate-600">·</span>
+            <p className="text-slate-300 font-medium flex items-center gap-1">
+              Hecho con <span className="text-red-500 animate-pulse inline-block text-xs" aria-label="amor">❤️</span> por{' '}
+              <span className="text-white font-bold tracking-wide">Mango Digital</span> en Tarragona
+            </p>
+          </div>
 
           <div className="flex items-center gap-4 sm:gap-6">
             <button

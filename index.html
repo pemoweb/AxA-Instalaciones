@@ -53,15 +53,29 @@
           "url": "https://instalaciones-axa.com/",
           "name": "Instalaciones AXA",
           "description": "Empresa especializada en servicios técnicos de climatización, electricidad y fontanería en Tarragona.",
-          "inLanguage": "es-ES"
+          "inLanguage": "es-ES",
+          "publisher": {
+            "@id": "https://instalaciones-axa.com/#business"
+          }
         },
         {
-          "@type": ["HomeAndConstructionBusiness", "LocalBusiness", "HVACBusiness", "Electrician", "Plumber"],
+          "@type": [
+            "HomeAndConstructionBusiness",
+            "LocalBusiness",
+            "HVACBusiness",
+            "Electrician",
+            "Plumber"
+          ],
           "@id": "https://instalaciones-axa.com/#business",
           "name": "Instalaciones AXA",
+          "alternateName": ["AXA Instalaciones", "Instalaciones AXA Tarragona"],
           "url": "https://instalaciones-axa.com/",
-          "logo": "https://instalaciones-axa.com/logo.svg",
-          "description": "Especialistas en climatización, electricidad y fontanería para viviendas, negocios y proyectos en Tarragona.",
+          "logo": "https://instalaciones-axa.com/favicon.svg",
+          "image": "https://instalaciones-axa.com/og-image.svg",
+          "description": "Empresa de instalaciones técnicas en Tarragona. Especialistas en climatización, electricidad y fontanería para viviendas, negocios y comunidades de propietarios.",
+          "priceRange": "$$",
+          "currenciesAccepted": "EUR",
+          "paymentAccepted": "Efectivo, Transferencia bancaria, Tarjeta de crédito",
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "Rambla Nova 124",
@@ -75,10 +89,41 @@
             "latitude": 41.1186,
             "longitude": 1.2505
           },
+          "hasMap": "https://www.google.com/maps/search/?api=1&query=Rambla+Nova+124+43001+Tarragona+Spain",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday"
+              ],
+              "opens": "08:00",
+              "closes": "19:00"
+            }
+          ],
           "areaServed": [
             {
               "@type": "City",
               "name": "Tarragona"
+            },
+            {
+              "@type": "City",
+              "name": "Reus"
+            },
+            {
+              "@type": "City",
+              "name": "Salou"
+            },
+            {
+              "@type": "City",
+              "name": "Cambrils"
+            },
+            {
+              "@type": "City",
+              "name": "Vila-seca"
             },
             {
               "@type": "AdministrativeArea",
@@ -89,27 +134,49 @@
             "https://www.instagram.com/instalaciones_axa/"
           ],
           "knowsAbout": [
-            "Climatización",
-            "Aire acondicionado",
-            "Electricidad de baja tensión",
-            "Cuadros eléctricos",
-            "Fontanería sanitaria",
-            "Instalaciones técnicas"
+            "Instalaciones Tarragona",
+            "Climatización y aire acondicionado en Tarragona",
+            "Instalaciones eléctricas de baja tensión",
+            "Cuadros eléctricos y acometidas",
+            "Fontanería sanitaria y redes de agua",
+            "Mantenimiento técnico integral de instalaciones",
+            "Eficiencia energética"
+          ],
+          "makesOffer": [
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@id": "https://instalaciones-axa.com/#climatizacion"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@id": "https://instalaciones-axa.com/#electricidad"
+              }
+            },
+            {
+              "@type": "Offer",
+              "itemOffered": {
+                "@id": "https://instalaciones-axa.com/#fontaneria"
+              }
+            }
           ],
           "hasOfferCatalog": {
             "@type": "OfferCatalog",
-            "name": "Catálogo de Especialidades Instalaciones AXA",
+            "name": "Catálogo Oficial de Servicios Técnicos - Instalaciones AXA",
             "itemListElement": [
               {
                 "@type": "OfferCatalog",
-                "name": "Climatización",
+                "name": "Servicios de Climatización Tarragona",
                 "itemListElement": [
                   {
                     "@type": "Service",
                     "@id": "https://instalaciones-axa.com/#climatizacion",
-                    "name": "Servicios de Climatización",
+                    "name": "Instalación y Mantenimiento de Climatización",
                     "serviceType": "Climatización",
-                    "description": "Soluciones profesionales de climatización adaptadas a cada espacio: instalación, mantenimiento, reparación y estudios de eficiencia térmica.",
+                    "category": "HVAC",
+                    "description": "Soluciones técnicas de climatización en Tarragona: instalación, mantenimiento preventivo, reparación y estudios de confort térmico para viviendas y empresas.",
                     "provider": {
                       "@id": "https://instalaciones-axa.com/#business"
                     },
@@ -123,14 +190,15 @@
               },
               {
                 "@type": "OfferCatalog",
-                "name": "Electricidad",
+                "name": "Servicios de Electricidad Tarragona",
                 "itemListElement": [
                   {
                     "@type": "Service",
                     "@id": "https://instalaciones-axa.com/#electricidad",
-                    "name": "Servicios de Electricidad",
+                    "name": "Instalaciones Eléctricas y Cuadros de Baja Tensión",
                     "serviceType": "Electricidad",
-                    "description": "Soluciones eléctricas profesionales para viviendas, negocios y proyectos: instalaciones, reparaciones, mantenimiento y mejoras de potencia y cuadros eléctricos.",
+                    "category": "Electrical",
+                    "description": "Instalaciones eléctricas profesionales en Tarragona: adecuación de cuadros eléctricos, cableado, baja tensión, reparaciones y boletines para hogares y proyectos.",
                     "provider": {
                       "@id": "https://instalaciones-axa.com/#business"
                     },
@@ -144,14 +212,15 @@
               },
               {
                 "@type": "OfferCatalog",
-                "name": "Fontanería",
+                "name": "Servicios de Fontanería Tarragona",
                 "itemListElement": [
                   {
                     "@type": "Service",
                     "@id": "https://instalaciones-axa.com/#fontaneria",
-                    "name": "Servicios de Fontanería",
+                    "name": "Fontanería Sanitaria y Redes de Agua",
                     "serviceType": "Fontanería",
-                    "description": "Trabajos de fontanería realizados con atención al detalle y durabilidad: redes de agua sanitaria, saneamiento, reparaciones, mantenimiento y mejoras.",
+                    "category": "Plumbing",
+                    "description": "Servicios integrales de fontanería en Tarragona: redes de agua sanitaria, desagües, saneamiento, mantenimiento y reformas con materiales de alta durabilidad.",
                     "provider": {
                       "@id": "https://instalaciones-axa.com/#business"
                     },
@@ -185,19 +254,19 @@
             {
               "@type": "ListItem",
               "position": 3,
-              "name": "Climatización",
+              "name": "Climatización en Tarragona",
               "item": "https://instalaciones-axa.com/#climatizacion"
             },
             {
               "@type": "ListItem",
               "position": 4,
-              "name": "Electricidad",
+              "name": "Electricidad en Tarragona",
               "item": "https://instalaciones-axa.com/#electricidad"
             },
             {
               "@type": "ListItem",
               "position": 5,
-              "name": "Fontanería",
+              "name": "Fontanería en Tarragona",
               "item": "https://instalaciones-axa.com/#fontaneria"
             }
           ]

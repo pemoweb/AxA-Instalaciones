@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Send, CheckCircle, MapPin, Instagram, ShieldCheck, MessageSquare, AlertCircle, ArrowRight } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Send, CheckCircle, MapPin, Instagram, ShieldCheck, MessageSquare, AlertCircle, ArrowRight, Wind, Zap, Droplets } from 'lucide-react';
 import { COMPANY_INFO } from '../data/axaData';
 import { ContactFormData, ServiceId } from '../types';
+import { validateQuoteForm, FormErrors } from '../utils/formValidation';
 
 interface ContactSectionProps {
   initialService?: ServiceId;
@@ -23,31 +24,71 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+  const [errors, setErrors] = useState<FormErrors>({});
+  const [touched, setTouched] = useState<Record<string, boolean>>({});
+
+  // Sync service if initialService prop changes
+  useEffect(() => {
+    if (initialService) {
+      setFormData((prev) => ({ ...prev, servicio: initialService }));
+    }
+  }, [initialService]);
+
+  const handleBlur = (field: string) => {
+    setTouched((prev) => ({ ...prev, [field]: true }));
+    const currentErrors = validateQuoteForm({
+      nombre: formData.nombre,
+      telefono: formData.telefono,
+      email: formData.email,
+      servicio: formData.servicio,
+      politicaAceptada: formData.politicaAceptada,
+    });
+    setErrors(currentErrors);
+  };
+
+  const handleFieldChange = (field: keyof ContactFormData, value: any) => {
+    setFormData((prev) => ({ ...prev, [field]: value }));
+
+    if (errors[field as keyof FormErrors] || errors.general) {
+      setErrors((prev) => {
+        const updated = { ...prev };
+        delete updated[field as keyof FormErrors];
+        delete updated.general;
+        return updated;
+      });
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    setErrorMessage(null);
 
-    if (!formData.nombre.trim()) {
-      setErrorMessage('Por favor, indica tu nombre.');
-      return;
-    }
-    if (!formData.telefono.trim() && !formData.email.trim()) {
-      setErrorMessage('Por favor, facilita al menos un teléfono o email de contacto.');
-      return;
-    }
-    if (!formData.politicaAceptada) {
-      setErrorMessage('Debes aceptar la política de privacidad para continuar.');
+    setTouched({
+      nombre: true,
+      telefono: true,
+      email: true,
+      politicaAceptada: true,
+    });
+
+    const validationErrors = validateQuoteForm({
+      nombre: formData.nombre,
+      telefono: formData.telefono,
+      email: formData.email,
+      servicio: formData.servicio,
+      politicaAceptada: formData.politicaAceptada,
+    });
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
       return;
     }
 
+    setErrors({});
     setIsSubmitting(true);
-    // Simulate brief processing for professional UX feedback
+
     setTimeout(() => {
       setIsSubmitting(false);
       setIsSubmitted(true);
-    }, 600);
+    }, 500);
   };
 
   const handleReset = () => {
@@ -60,6 +101,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
       mensaje: '',
       politicaAceptada: false,
     });
+    setErrors({});
+    setTouched({});
+  };
+
+  const getServiceLabel = (srv: ServiceId) => {
+    switch (srv) {
+      case 'climatizacion':
+        return 'Climatización';
+      case 'electricidad':
+        return 'Electricidad';
+      case 'fontaneria':
+        return 'Fontanería';
+      default:
+        return 'Proyecto Técnico General';
+    }
   };
 
   return (
@@ -88,13 +144,22 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <CheckCircle className="w-8 h-8 text-emerald-400" />
                 </div>
                 <div className="space-y-2">
+                  <span className="text-xs font-mono font-bold tracking-widest text-[#0B116B] uppercase block">
+                    SOLICITUD CONFIRMADA
+                  </span>
                   <h3 className="text-2xl font-extrabold text-[#0B116B]">
-                    ¡Solicitud recibida!
+                    ¡Solicitud recibida correctamente!
                   </h3>
-                  <p className="text-sm sm:text-base text-slate-600 max-w-md mx-auto">
-                    Gracias, <strong>{formData.nombre}</strong>. Hemos registrado tu consulta para el servicio de{' '}
-                    <strong className="capitalize">{formData.servicio}</strong>. Nos pondremos en contacto contigo a la mayor brevedad.
+                  <p className="text-sm sm:text-base text-slate-600 max-w-md mx-auto leading-relaxed">
+                    Muchas gracias, <strong>{formData.nombre}</strong>. Hemos registrado tu consulta para el servicio de{' '}
+                    <strong className="text-[#0B116B]">{getServiceLabel(formData.servicio)}</strong>. Nos pondremos en contacto contigo a la mayor brevedad.
                   </p>
+                </div>
+
+                <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 text-xs text-slate-600 text-left max-w-md mx-auto space-y-1">
+                  <p><strong>Servicio:</strong> {getServiceLabel(formData.servicio)}</p>
+                  {formData.telefono && <p><strong>Teléfono:</strong> {formData.telefono}</p>}
+                  {formData.email && <p><strong>Email:</strong> {formData.email}</p>}
                 </div>
 
                 <div className="pt-4 flex flex-wrap justify-center gap-4">
@@ -116,21 +181,30 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="space-y-6" id="quote-contact-form">
+              <form onSubmit={handleSubmit} noValidate className="space-y-6" id="quote-contact-form">
                 
                 <div className="border-b border-slate-100 pb-4">
-                  <h3 className="text-xl font-extrabold text-[#0B116B]">
+                  <h3 className="text-xl sm:text-2xl font-extrabold text-[#0B116B]">
                     Solicitud de Presupuesto
                   </h3>
                   <p className="text-xs sm:text-sm text-slate-500 mt-1">
-                    Rellena los datos de tu proyecto y te responderemos con una propuesta personalizada.
+                    Rellena los datos de tu proyecto y te responderemos con una propuesta personalizada sin compromiso.
                   </p>
                 </div>
 
-                {errorMessage && (
-                  <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs sm:text-sm flex items-center gap-3">
-                    <AlertCircle className="w-5 h-5 shrink-0" />
-                    <span>{errorMessage}</span>
+                {/* Overall Error Notification */}
+                {Object.keys(errors).length > 0 && (
+                  <div className="p-4 rounded-xl bg-red-50 border border-red-200 text-red-700 text-xs sm:text-sm flex items-start gap-3 animate-in fade-in duration-150">
+                    <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
+                    <div>
+                      <strong className="block font-semibold">Por favor, revisa los errores en el formulario:</strong>
+                      <ul className="list-disc list-inside mt-1 space-y-0.5 text-xs">
+                        {errors.nombre && <li>{errors.nombre}</li>}
+                        {errors.telefono && <li>{errors.telefono}</li>}
+                        {errors.email && <li>{errors.email}</li>}
+                        {errors.politicaAceptada && <li>{errors.politicaAceptada}</li>}
+                      </ul>
+                    </div>
                   </div>
                 )}
 
@@ -140,7 +214,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   {/* Nombre */}
                   <div className="sm:col-span-2">
                     <label htmlFor="nombre" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Nombre completo *
+                      Nombre completo o Empresa *
                     </label>
                     <input
                       type="text"
@@ -148,10 +222,23 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       name="nombre"
                       required
                       value={formData.nombre}
-                      onChange={(e) => setFormData({ ...formData, nombre: e.target.value })}
-                      placeholder="Tu nombre o empresa"
-                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0B116B] focus:border-transparent text-sm transition-all"
+                      onChange={(e) => handleFieldChange('nombre', e.target.value)}
+                      onBlur={() => handleBlur('nombre')}
+                      placeholder="Tu nombre o el de tu empresa"
+                      className={`w-full px-4 py-3.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
+                        errors.nombre
+                          ? 'border-red-400 bg-red-50/40 focus:ring-red-300'
+                          : 'border-slate-200 focus:ring-[#0B116B]'
+                      }`}
+                      aria-invalid={!!errors.nombre}
+                      aria-describedby={errors.nombre ? 'form-nombre-error' : undefined}
                     />
+                    {errors.nombre && (
+                      <p id="form-nombre-error" className="text-red-600 text-xs mt-1.5 flex items-center gap-1 font-medium">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                        <span>{errors.nombre}</span>
+                      </p>
+                    )}
                   </div>
 
                   {/* Teléfono */}
@@ -164,26 +251,52 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       id="telefono"
                       name="telefono"
                       value={formData.telefono}
-                      onChange={(e) => setFormData({ ...formData, telefono: e.target.value })}
-                      placeholder="Teléfono de contacto"
-                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0B116B] focus:border-transparent text-sm transition-all"
+                      onChange={(e) => handleFieldChange('telefono', e.target.value)}
+                      onBlur={() => handleBlur('telefono')}
+                      placeholder="600 000 000"
+                      className={`w-full px-4 py-3.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
+                        errors.telefono
+                          ? 'border-red-400 bg-red-50/40 focus:ring-red-300'
+                          : 'border-slate-200 focus:ring-[#0B116B]'
+                      }`}
+                      aria-invalid={!!errors.telefono}
+                      aria-describedby={errors.telefono ? 'form-tel-error' : undefined}
                     />
+                    {errors.telefono && (
+                      <p id="form-tel-error" className="text-red-600 text-[11.5px] mt-1.5 flex items-start gap-1 font-medium">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                        <span>{errors.telefono}</span>
+                      </p>
+                    )}
                   </div>
 
                   {/* Email */}
                   <div>
                     <label htmlFor="email" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Correo electrónico *
+                      Correo electrónico
                     </label>
                     <input
                       type="email"
                       id="email"
                       name="email"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) => handleFieldChange('email', e.target.value)}
+                      onBlur={() => handleBlur('email')}
                       placeholder="tu@email.com"
-                      className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0B116B] focus:border-transparent text-sm transition-all"
+                      className={`w-full px-4 py-3.5 rounded-xl border text-sm transition-all focus:outline-none focus:ring-2 ${
+                        errors.email
+                          ? 'border-red-400 bg-red-50/40 focus:ring-red-300'
+                          : 'border-slate-200 focus:ring-[#0B116B]'
+                      }`}
+                      aria-invalid={!!errors.email}
+                      aria-describedby={errors.email ? 'form-email-error' : undefined}
                     />
+                    {errors.email && (
+                      <p id="form-email-error" className="text-red-600 text-[11.5px] mt-1.5 flex items-start gap-1 font-medium">
+                        <AlertCircle className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                        <span>{errors.email}</span>
+                      </p>
+                    )}
                   </div>
 
                   {/* Servicio Selector */}
@@ -195,12 +308,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                       id="servicio"
                       name="servicio"
                       value={formData.servicio}
-                      onChange={(e) => setFormData({ ...formData, servicio: e.target.value as ServiceId })}
+                      onChange={(e) => handleFieldChange('servicio', e.target.value as ServiceId)}
                       className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0B116B] focus:border-transparent text-sm bg-white transition-all font-medium text-slate-800"
                     >
-                      <option value="climatizacion">❄️ Climatización</option>
-                      <option value="electricidad">⚡ Electricidad</option>
-                      <option value="fontaneria">💧 Fontanería</option>
+                      <option value="climatizacion">❄️ Climatización (Confort, climatización y frío/calor)</option>
+                      <option value="electricidad">⚡ Electricidad (Instalaciones, cuadros y baja tensión)</option>
+                      <option value="fontaneria">💧 Fontanería (Redes sanitarias y reformas)</option>
                       <option value="otro">Otro tipo de proyecto técnico</option>
                     </select>
                   </div>
@@ -208,15 +321,15 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   {/* Mensaje */}
                   <div className="sm:col-span-2">
                     <label htmlFor="mensaje" className="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">
-                      Detalles del proyecto o mensaje
+                      Detalles del proyecto o mensaje (opcional)
                     </label>
                     <textarea
                       id="mensaje"
                       name="mensaje"
                       rows={4}
                       value={formData.mensaje}
-                      onChange={(e) => setFormData({ ...formData, mensaje: e.target.value })}
-                      placeholder="Explícanos brevemente qué necesitas (tipo de instalación, ubicación aproximada, reforma o avería)..."
+                      onChange={(e) => handleFieldChange('mensaje', e.target.value)}
+                      placeholder="Explícanos brevemente qué necesitas (tipo de instalación, ubicación aproximada en Tarragona, reforma o avería)..."
                       className="w-full px-4 py-3.5 rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-[#0B116B] focus:border-transparent text-sm transition-all resize-y"
                     />
                   </div>
@@ -224,26 +337,35 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
 
                 {/* Privacy Checkbox */}
-                <div className="flex items-center gap-3 pt-2 min-h-[44px]">
-                  <input
-                    type="checkbox"
-                    id="politica"
-                    name="politica"
-                    checked={formData.politicaAceptada}
-                    onChange={(e) => setFormData({ ...formData, politicaAceptada: e.target.checked })}
-                    className="w-5 h-5 text-[#0B116B] rounded border-slate-300 focus:ring-[#0B116B] cursor-pointer"
-                  />
-                  <label htmlFor="politica" className="text-xs text-slate-600 leading-relaxed cursor-pointer select-none">
-                    Acepto la{' '}
-                    <button
-                      type="button"
-                      onClick={onOpenPrivacyModal}
-                      className="text-[#0B116B] underline font-medium hover:text-[#1823B8] p-1"
-                    >
-                      política de privacidad
-                    </button>{' '}
-                    y el tratamiento de mis datos para la gestión del presupuesto.
-                  </label>
+                <div>
+                  <div className="flex items-start gap-3 pt-2 min-h-[44px]">
+                    <input
+                      type="checkbox"
+                      id="politica"
+                      name="politica"
+                      checked={formData.politicaAceptada}
+                      onChange={(e) => handleFieldChange('politicaAceptada', e.target.checked)}
+                      className="w-5 h-5 mt-0.5 text-[#0B116B] rounded border-slate-300 focus:ring-[#0B116B] cursor-pointer"
+                      aria-invalid={!!errors.politicaAceptada}
+                    />
+                    <label htmlFor="politica" className="text-xs text-slate-600 leading-relaxed cursor-pointer select-none">
+                      Acepto la{' '}
+                      <button
+                        type="button"
+                        onClick={onOpenPrivacyModal}
+                        className="text-[#0B116B] underline font-medium hover:text-[#1823B8] p-0.5"
+                      >
+                        política de privacidad
+                      </button>{' '}
+                      y el tratamiento de mis datos para la gestión y contacto del presupuesto.
+                    </label>
+                  </div>
+                  {errors.politicaAceptada && (
+                    <p className="text-red-600 text-xs mt-1.5 flex items-center gap-1 font-medium ml-8">
+                      <AlertCircle className="w-3.5 h-3.5 shrink-0" />
+                      <span>{errors.politicaAceptada}</span>
+                    </p>
+                  )}
                 </div>
 
                 {/* Submit Button */}

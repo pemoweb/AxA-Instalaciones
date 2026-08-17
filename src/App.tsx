@@ -75,7 +75,7 @@ export default function App() {
         <BrandSection />
 
         {/* 07. Portfolio / Bento Trabajos Realizados */}
-        <PortfolioSection />
+        <PortfolioSection onOpenQuote={handleOpenQuote} />
 
         {/* 08. Por Qué AXA */}
         <WhyAxaSection />

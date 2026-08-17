@@ -104,14 +104,22 @@ export const SpecialtiesOverview: React.FC<SpecialtiesOverviewProps> = ({ onSele
                     </p>
                   </div>
 
-                  {/* Action Button */}
-                  <button
-                    onClick={() => scrollToService(item.target)}
-                    className="inline-flex items-center gap-2 min-h-[44px] text-sm font-bold text-[#0B116B] group-hover:text-[#1823B8] transition-colors border-t border-slate-100 pt-3"
-                  >
-                    <span>VER SERVICIO</span>
-                    <ArrowRight className="w-4 h-4 transition-transform duration-200 group-hover:translate-x-1" />
-                  </button>
+                  {/* Action Buttons */}
+                  <div className="flex items-center justify-between border-t border-slate-100 pt-3 gap-2">
+                    <button
+                      onClick={() => scrollToService(item.target)}
+                      className="inline-flex items-center gap-1.5 min-h-[44px] text-xs font-bold text-slate-700 hover:text-[#0B116B] transition-colors"
+                    >
+                      <span>VER DETALLES</span>
+                      <ArrowRight className="w-3.5 h-3.5 transition-transform duration-200 group-hover:translate-x-1" />
+                    </button>
+                    <button
+                      onClick={() => onSelectService(item.id)}
+                      className="inline-flex items-center gap-1.5 min-h-[44px] px-4 py-2 rounded-xl bg-[#0B116B] text-white text-xs font-bold uppercase tracking-wider hover:bg-[#070C4D] transition-colors shadow-sm"
+                    >
+                      <span>CONSULTAR</span>
+                    </button>
+                  </div>
                 </div>
               </div>
             );

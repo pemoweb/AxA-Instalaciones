@@ -3,7 +3,11 @@ import { PORTFOLIO_ITEMS } from '../data/axaData';
 import { PortfolioItem } from '../types';
 import { X, ZoomIn, MapPin, Tag, ChevronLeft, ChevronRight, Wind, Zap, Droplets } from 'lucide-react';
 
-export const PortfolioSection: React.FC = () => {
+interface PortfolioSectionProps {
+  onOpenQuote?: (service: 'climatizacion' | 'electricidad' | 'fontaneria') => void;
+}
+
+export const PortfolioSection: React.FC<PortfolioSectionProps> = ({ onOpenQuote }) => {
   const [activeFilter, setActiveFilter] = useState<'todos' | 'climatizacion' | 'electricidad' | 'fontaneria'>('todos');
   const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null);
 
@@ -203,16 +207,31 @@ export const PortfolioSection: React.FC = () => {
                 {selectedItem.description}
               </p>
 
-              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center gap-2">
-                <span className="text-xs font-mono text-slate-400 uppercase mr-2">ESPECIFICACIONES:</span>
-                {selectedItem.technicalSpecs.map((spec, idx) => (
-                  <span
-                    key={idx}
-                    className="text-xs font-mono px-3 py-1 rounded-md bg-white/10 text-white border border-white/15"
+              <div className="pt-4 border-t border-white/10 flex flex-wrap items-center justify-between gap-3">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-xs font-mono text-slate-400 uppercase mr-2">ESPECIFICACIONES:</span>
+                  {selectedItem.technicalSpecs.map((spec, idx) => (
+                    <span
+                      key={idx}
+                      className="text-xs font-mono px-3 py-1 rounded-md bg-white/10 text-white border border-white/15"
+                    >
+                      {spec}
+                    </span>
+                  ))}
+                </div>
+
+                {onOpenQuote && (
+                  <button
+                    onClick={() => {
+                      const cat = selectedItem.category;
+                      setSelectedItem(null);
+                      onOpenQuote(cat);
+                    }}
+                    className="min-h-[44px] px-5 py-2.5 rounded-xl bg-white text-[#0B116B] text-xs font-bold uppercase tracking-wider hover:bg-slate-100 transition-colors shadow-md flex items-center gap-2"
                   >
-                    {spec}
-                  </span>
-                ))}
+                    <span>CONSULTAR ESTE SERVICIO</span>
+                  </button>
+                )}
               </div>
             </div>
           </div>

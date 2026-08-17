@@ -2,5 +2,7 @@
   "name": "Instalaciones AXA",
   "description": "Web corporativa de Instalaciones AXA en Tarragona. Especialistas en Climatización, Electricidad y Fontanería.",
   "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
 }
