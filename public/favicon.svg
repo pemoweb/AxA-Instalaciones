@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <!-- Brand Dark Navy Blue Square Background -->
+  <rect width="512" height="512" rx="96" fill="#000D76" />
+  
+  <!-- Axa INSTALACIONES Centered Official Logo -->
+  <g transform="translate(6, 12)">
+    <!-- Letter A -->
+    <path d="M120 285 L182 135 L218 135 L280 285 L242 285 L227 248 L173 248 L158 285 Z M183 222 L217 222 L200 178 Z" fill="#FFFFFF" />
+    
+    <!-- Letter x -->
+    <path d="M232 178 L262 178 L294 228 L326 178 L356 178 L314 238 L358 285 L328 285 L294 248 L260 285 L230 285 L274 238 Z" fill="#FFFFFF" />
+    
+    <!-- Letter a -->
+    <path d="M344 200 C344 186 355 175 372 175 C388 175 397 183 402 195 L402 178 L430 178 L430 285 L402 285 L402 268 C396 280 384 288 368 288 C348 288 334 274 334 252 C334 230 348 216 372 216 L402 216 L402 212 C402 201 394 196 384 196 C374 196 368 200 364 206 Z M402 236 L376 236 C364 236 358 242 358 251 C358 260 365 267 376 267 C390 267 402 258 402 244 Z" fill="#FFFFFF" />
+    
+    <!-- 4-pointed Star Sparkle inside 'a' bowl center -->
+    <path d="M 380 240 Q 382 250 389 252 Q 382 254 380 264 Q 378 254 371 252 Q 378 250 380 240 Z" fill="#000D76" />
+    
+    <!-- Subtitle: INSTALACIONES -->
+    <text x="250" y="336" text-anchor="middle" font-family="'Plus Jakarta Sans', 'Arial', sans-serif" font-weight="700" font-size="22.5" letter-spacing="0.28em" fill="#FFFFFF">
+      INSTALACIONES
+    </text>
+  </g>
+</svg>
