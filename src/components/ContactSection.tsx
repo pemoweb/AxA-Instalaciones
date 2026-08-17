@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Send, CheckCircle, MapPin, Instagram, ShieldCheck, MessageSquare, AlertCircle, ArrowRight, Wind, Zap, Droplets } from 'lucide-react';
+import { Send, CheckCircle, MapPin, Instagram, ShieldCheck, MessageSquare, AlertCircle, ArrowRight, Wind, Zap, Droplets, Phone } from 'lucide-react';
 import { COMPANY_INFO } from '../data/axaData';
 import { ContactFormData, ServiceId } from '../types';
 import { validateQuoteForm, FormErrors } from '../utils/formValidation';
@@ -435,6 +435,28 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
               </div>
 
+              {/* Direct Telephone & WhatsApp */}
+              <div className="pt-4 border-t border-white/15">
+                <div className="flex items-center justify-between gap-4">
+                  <div>
+                    <p className="text-xs font-mono text-slate-300 uppercase">WhatsApp & Teléfono</p>
+                    <p className="text-sm font-bold text-white mt-0.5">{COMPANY_INFO.whatsappNumber}</p>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <a
+                      href={COMPANY_INFO.whatsappUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center justify-center gap-1.5 min-h-[44px] px-3.5 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-md"
+                      id="btn-direct-contact-whatsapp"
+                    >
+                      <MessageSquare className="w-4 h-4" />
+                      <span>WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+
               {/* Instagram Official Section */}
               <div className="pt-4 border-t border-white/15">
                 <div className="flex items-center justify-between gap-4">
@@ -460,17 +482,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
             {/* Direct Quick WhatsApp Banner */}
             <div className="p-6 rounded-2xl bg-white border border-slate-200 shadow-sm flex items-center justify-between gap-4">
               <div>
-                <h4 className="text-sm font-bold text-[#0B116B]">¿Prefieres mensaje directo?</h4>
-                <p className="text-xs text-slate-500 mt-0.5">Escríbenos directamente por WhatsApp.</p>
+                <h4 className="text-sm font-bold text-[#0B116B]">Atención directa por WhatsApp</h4>
+                <p className="text-xs text-slate-600 font-mono mt-0.5">{COMPANY_INFO.whatsappNumber}</p>
               </div>
               <a
                 href={COMPANY_INFO.whatsappUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="min-h-[44px] px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2 transition-colors shrink-0"
+                className="min-h-[44px] px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold uppercase tracking-wider inline-flex items-center justify-center gap-2 transition-colors shrink-0 shadow-md"
               >
                 <MessageSquare className="w-4 h-4" />
-                <span>WhatsApp</span>
+                <span>CHATEAR AHORA</span>
               </a>
             </div>
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Instagram, MapPin, ArrowUp } from 'lucide-react';
+import { Instagram, MapPin, ArrowUp, MessageSquare, Phone } from 'lucide-react';
 import { AxaLogo } from './AxaLogo';
 import { COMPANY_INFO } from '../data/axaData';
 
@@ -94,24 +94,37 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenCookies }) 
             </ul>
           </div>
 
-          {/* Col 3: Social & Location */}
+          {/* Col 3: Social & Contact */}
           <div className="lg:col-span-4 space-y-4">
             <p className="text-xs font-mono font-bold tracking-widest text-slate-400 uppercase">
-              REDES SOCIALES
+              CONTACTO & REDES
             </p>
-            <a
-              href={COMPANY_INFO.instagram.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2.5 min-h-[44px] px-5 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-sm font-semibold text-white transition-colors"
-              id="footer-instagram-link"
-            >
-              <Instagram className="w-4 h-4 text-pink-400" />
-              <span>{COMPANY_INFO.instagram.handle}</span>
-            </a>
+            <div className="flex flex-col sm:flex-row lg:flex-col gap-2.5">
+              <a
+                href={COMPANY_INFO.whatsappUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 min-h-[44px] px-4 py-2.5 rounded-xl bg-emerald-600/90 hover:bg-emerald-600 border border-emerald-500/40 text-sm font-semibold text-white transition-colors"
+                id="footer-whatsapp-link"
+              >
+                <MessageSquare className="w-4 h-4 text-white" />
+                <span>WhatsApp: {COMPANY_INFO.whatsappNumber}</span>
+              </a>
 
-            <p className="text-xs text-slate-400 leading-relaxed pt-2">
-              Sigue nuestros proyectos y trabajos técnicos en Instagram.
+              <a
+                href={COMPANY_INFO.instagram.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2.5 min-h-[44px] px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-sm font-semibold text-white transition-colors"
+                id="footer-instagram-link"
+              >
+                <Instagram className="w-4 h-4 text-pink-400" />
+                <span>{COMPANY_INFO.instagram.handle}</span>
+              </a>
+            </div>
+
+            <p className="text-xs text-slate-400 leading-relaxed pt-1">
+              Atención directa en Tarragona y seguimiento de proyectos en Instagram.
             </p>
           </div>
 

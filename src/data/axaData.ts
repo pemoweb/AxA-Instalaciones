@@ -19,8 +19,11 @@ export const COMPANY_INFO = {
     url: 'https://www.instagram.com/instalaciones_axa/',
   },
   specialtiesText: 'Climatización · Electricidad · Fontanería',
-  phonePlaceholder: '+34 977 00 00 00',
-  whatsappUrl: 'https://wa.me/?text=Hola%20Instalaciones%20AXA%2C%20quisiera%20solicitar%20informaci%C3%B3n%20sobre%20un%20proyecto%20de%20instalaci%C3%B3n.',
+  phone: '+58 412 084 5704',
+  phoneRaw: '+584120845704',
+  phoneTelUrl: 'tel:+584120845704',
+  whatsappNumber: '+58 412 084 5704',
+  whatsappUrl: 'https://wa.me/584120845704?text=Hola%20Instalaciones%20AXA%2C%20quisiera%20solicitar%20informaci%C3%B3n%20sobre%20un%20proyecto%20de%20instalaci%C3%B3n.',
 };
 
 export const SERVICES_DATA: Record<'climatizacion' | 'electricidad' | 'fontaneria', ServiceDetail> = {
