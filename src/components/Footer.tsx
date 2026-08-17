@@ -118,16 +118,30 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenCookies }) 
         </div>
 
         {/* Sub-Footer Legal & Copyright */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-400">
-          <div className="flex flex-col sm:flex-row items-center sm:items-start gap-1 sm:gap-3 text-center sm:text-left">
+        <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+          {/* Left: Copyright */}
+          <div className="flex items-center gap-2 text-center md:text-left">
             <p>© 2026 Instalaciones AXA. Todos los derechos reservados.</p>
-            <span className="hidden sm:inline text-slate-600">·</span>
-            <p className="text-slate-300 font-medium flex items-center gap-1">
-              Hecho con <span className="text-red-500 animate-pulse inline-block text-xs" aria-label="amor">❤️</span> por{' '}
-              <span className="text-white font-bold tracking-wide">Mango Digital</span> en Tarragona
-            </p>
           </div>
 
+          {/* Center: Mango Digital Agency Badge with Link */}
+          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-slate-300 text-xs shadow-sm hover:bg-white/10 hover:border-white/20 transition-colors">
+            <span>Hecho con</span>
+            <span className="text-red-500 animate-pulse inline-block text-xs" aria-label="amor">❤️</span>
+            <span>por</span>
+            <a
+              href="https://mangodigital.es"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white font-bold tracking-wide hover:underline hover:text-sky-300 transition-colors inline-flex items-center gap-1 focus:outline-none focus:ring-1 focus:ring-white/40 rounded"
+              title="Mango Digital - Agencia de Marketing y Diseño Web en Tarragona"
+            >
+              Mango Digital
+            </a>
+            <span className="text-slate-400">en Tarragona</span>
+          </div>
+
+          {/* Right: Legal & Back to Top */}
           <div className="flex items-center gap-4 sm:gap-6">
             <button
               onClick={onOpenPrivacy}
@@ -143,7 +157,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenCookies }) 
             </button>
             <button
               onClick={scrollToTop}
-              className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors ml-2"
+              className="min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg bg-white/10 hover:bg-white/20 text-white transition-colors ml-1"
               aria-label="Volver arriba"
             >
               <ArrowUp className="w-4 h-4" />
