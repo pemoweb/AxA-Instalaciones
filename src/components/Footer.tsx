@@ -84,6 +84,15 @@ export const Footer: React.FC<FooterProps> = ({ onOpenPrivacy, onOpenCookies }) 
               </li>
               <li>
                 <a
+                  href="#faq"
+                  onClick={(e) => handleNavClick(e, '#faq')}
+                  className="min-h-[44px] flex items-center hover:text-white transition-colors"
+                >
+                  Preguntas Frecuentes
+                </a>
+              </li>
+              <li>
+                <a
                   href="#contacto"
                   onClick={(e) => handleNavClick(e, '#contacto')}
                   className="min-h-[44px] flex items-center hover:text-white transition-colors"

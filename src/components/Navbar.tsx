@@ -37,6 +37,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenQuote }) => {
     { name: 'Servicios', href: '#especialidades' },
     { name: 'Trabajos', href: '#trabajos' },
     { name: 'Nosotros', href: '#por-que-axa' },
+    { name: 'FAQ', href: '#faq' },
     { name: 'Contacto', href: '#contacto' },
   ];
 

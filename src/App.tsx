@@ -12,10 +12,12 @@ import { ProcessSection } from './components/ProcessSection';
 import { TarragonaLocationSection } from './components/TarragonaLocationSection';
 import { FinalCtaSection } from './components/FinalCtaSection';
 import { ContactSection } from './components/ContactSection';
+import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { QuoteModal } from './components/QuoteModal';
 import { LegalModal } from './components/LegalModal';
 import { MobileBottomBar } from './components/MobileBottomBar';
+import { BackToTop } from './components/BackToTop';
 import { ServiceId } from './types';
 
 export default function App() {
@@ -89,7 +91,10 @@ export default function App() {
         {/* 11. Final Conversion CTA */}
         <FinalCtaSection onOpenQuote={() => handleOpenQuote()} />
 
-        {/* 12. Modern Contact Form & Direct Channels */}
+        {/* 12. Frequently Asked Questions Accordion */}
+        <FaqSection onOpenQuote={() => handleOpenQuote()} />
+
+        {/* 13. Modern Contact Form & Direct Channels */}
         <ContactSection
           initialService={selectedQuoteService}
           onOpenPrivacyModal={() => setLegalModalState({ isOpen: true, type: 'privacy' })}
@@ -104,6 +109,9 @@ export default function App() {
 
       {/* Mobile Sticky Quick Action Bar (LLAMAR | WHATSAPP | PRESUPUESTO) */}
       <MobileBottomBar onOpenQuote={() => handleOpenQuote()} />
+
+      {/* Floating Back To Top Button */}
+      <BackToTop />
 
       {/* Interactive Modals */}
       <QuoteModal

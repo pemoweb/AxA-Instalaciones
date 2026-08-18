@@ -40,6 +40,14 @@ export interface ProcessItem {
   description: string;
 }
 
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+  category: 'servicios' | 'plazos' | 'garantias' | 'general';
+  categoryLabel: string;
+}
+
 export interface ContactFormData {
   nombre: string;
   telefono: string;

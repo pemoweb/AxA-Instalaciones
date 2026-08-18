@@ -1,4 +1,4 @@
-import { ServiceDetail, PortfolioItem, WhyAxaItem, ProcessItem } from '../types';
+import { ServiceDetail, PortfolioItem, WhyAxaItem, ProcessItem, FaqItem } from '../types';
 
 export const COMPANY_INFO = {
   name: 'Instalaciones AXA',
@@ -227,3 +227,49 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     technicalSpecs: ['Valvulería de latón', 'Control de presión', 'Mantenimiento accesible'],
   },
 ];
+
+export const FAQS: FaqItem[] = [
+  {
+    id: 'faq-1',
+    question: '¿Qué servicios realiza Instalaciones AXA en Tarragona?',
+    answer: 'Somos especialistas técnicos en tres áreas fundamentales: Climatización (instalación de aire acondicionado tipo Split, conductos, cassette, recargas de gas R32/R410A y mantenimiento preventivo), Electricidad (baja tensión, sustitución y ampliación de cuadros eléctricos, cableado, boletines CIE y legalizaciones) y Fontanería (instalaciones completas de agua sanitaria, grupos de presión, termos, descalcificadores y reparación de fugas).',
+    category: 'servicios',
+    categoryLabel: 'Servicios',
+  },
+  {
+    id: 'faq-2',
+    question: '¿Cuál es el tiempo de respuesta habitual para presupuestos y averías?',
+    answer: 'Para solicitudes de presupuesto respondemos habitualmente en un plazo inferior a 24 horas laborables. En situaciones de urgencias o averías críticas (cortes eléctricos, fugas de agua o paradas de climatización) priorizamos la intervención técnica directa en Tarragona y municipios cercanos según disponibilidad.',
+    category: 'plazos',
+    categoryLabel: 'Tiempos de Respuesta',
+  },
+  {
+    id: 'faq-3',
+    question: '¿Qué garantías ofrecéis en los trabajos e instalaciones?',
+    answer: 'Todos nuestros trabajos cuentan con garantía profesional de instalación conforme a la normativa vigente (REBT para electricidad, RITE para climatización y CTE para fontanería). Además, todos los equipos, componentes y maquinaria instalada disponen de la garantía oficial del fabricante (habitualmente de 2 a 3 años según marca).',
+    category: 'garantias',
+    categoryLabel: 'Garantías',
+  },
+  {
+    id: 'faq-4',
+    question: '¿Emitís boletines eléctricos y certificados de instalación oficiales?',
+    answer: 'Sí. Como técnicos instaladores autorizados, tramitamos el Certificado de Instalación Eléctrica en Baja Tensión (CIE o boletín eléctrico), memorias técnicas de diseño, aumentos de potencia, altas de nuevos suministros y legalizaciones ante la administración y compañías distribuidoras.',
+    category: 'servicios',
+    categoryLabel: 'Servicios',
+  },
+  {
+    id: 'faq-5',
+    question: '¿El presupuesto tiene algún coste o compromiso?',
+    answer: 'No. Todos nuestros presupuestos son 100% gratuitos y sin ningún tipo de compromiso. Evaluamos los requerimientos técnicos de tu vivienda, local o comunidad, desglosamos las partidas de mano de obra y materiales con total transparencia y te asesoramos para elegir la opción más eficiente.',
+    category: 'general',
+    categoryLabel: 'Presupuestos',
+  },
+  {
+    id: 'faq-6',
+    question: '¿Cuál es vuestra zona de cobertura técnica?',
+    answer: 'Nuestra sede está ubicada en Rambla Nova 124 (Tarragona). Prestamos servicio en toda la ciudad de Tarragona y su área metropolitana, así como en Reus, Salou, Cambrils, Vila-seca, Torredembarra y resto de poblaciones del Camp de Tarragona.',
+    category: 'general',
+    categoryLabel: 'Cobertura',
+  },
+];
+
